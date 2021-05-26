@@ -1,10 +1,14 @@
-import React,{useContext} from 'react';
-import {ProductContext} from '../Global/ProductContext'
+import React,{useContext, useState} from 'react';
+import {ProductContext} from '../Global/ProductContext';
+import CartContext from '../Global/CartContext';
 
 const Products = () => {
 
-    const {product} = useContext(ProductContext);
-    // console.log(data);
+    const product = useState(ProductContext);
+    console.log("test",product);
+    console.log('test2',ProductContext);
+    const data= useContext(CartContext)
+    console.log("Data Variable",data);
 
 
 
@@ -19,9 +23,7 @@ const Products = () => {
                         <div className="product-name">
                             {product.title}
                         </div>
-                        {/* <div className='product-price'>
-                            {product.desc}
-                        </div> */}
+                      <div className="add_to_cart">Add to Cart</div>
                     </div>
                     </div>
             ))}
