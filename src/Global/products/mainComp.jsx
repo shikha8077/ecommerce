@@ -6,8 +6,10 @@ import LeftPanel from './LeftPanel';
 export default class mainComp extends Component {
     state= {
 
-        data: ['Dining','Drawing','Bedroom','Study'],
+        data: ['Dining','Drawing  ','Bedroom','Study'],
         categories:'',
+        // addFunc:['id','category'],
+
 
 }
    radioStructure(data){

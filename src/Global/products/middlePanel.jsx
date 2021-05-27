@@ -6,44 +6,53 @@ export default class middlePanel extends Component {
 
         state= {
             data: [],
-            categoryProduct:''
+            categoryProduct:'',
+            mainData:[],
     }
-    
-    
-  
-          
-
-
-  async  componentDidMount() {
+ async  componentDidMount() {
       console.log("CDM",this.props.category)
         try{
-            let  response  = await axios.get('http://localhost:2410/product')
-            let localArray=response.data;
-            if(this.props.category!==''){
-          let  product= localArray.filter(item =>item.category==this.props.category)
-          console.log('test again',product)
-          this.setState({data:product})
-
-            }
-            else{
-                console.log(response);
-                this.setState({data: response.data})
-            }
+            let  response  = await axios.get('http://localhost:2410/product')    
+             this.setState({data: response.data,mainData:response.data})
             
         }
         catch(err){
             console.log(err.response);
         }
-        this.forceUpdate()
     }
+
+   componentWillUpdate(nextProps, nextState) {
+      let mainData = nextState.mainData; 
+         
+      console.log("nextprops",nextProps)
+      console.log("nextstate",nextState)
+    if(nextProps.category!==''){
+
+      nextState.data= mainData.filter(item=>item.category===nextProps.category)
+      console.log('inside CWU',nextState.data)
+      
+
+     
+
+    }
+    else{
+        nextState.data=mainData
+    }
+   }
+   addFunc = (index) =>{
+    //    console.log('add to cart',index)
+    //    console.log('cartdata',this.state.mainData[index])
+
+    //   let addToCartPro = this.state.mainData.find(item => item.id === index)
+    //   console.log('add to cart product',addToCartPro)
+    //   item.push
+        
+     }
+
+   
+    
     
     render() {
-        // let product
-        // if(this.state.data.length>0){
-        //  product= this.state.data.filter(item =>item.category==this.props.category)
-        //    console.log("filter data ",product)
-        //    this.setState({data:product})
-        // }
       
 
         console.log("main data ",this.state.data)
@@ -56,7 +65,7 @@ export default class middlePanel extends Component {
         return (
             <div className="container">
                 <div className='row col-12'>
-            {this.state.data.map((product)=>(
+            {this.state.data.map((product,index)=>(
                 <div className="productsmap col col-4" key={product.id}>
                    <div className="product-image ">
                        <img src={product.img}/>
@@ -65,7 +74,9 @@ export default class middlePanel extends Component {
                         <div className="product-name">
                             {product.title}
                         </div>
-                      <div className="add_to_cart">Add to Cart</div>
+                      <div className="add_to_cart">
+                          <button onClick={() => this.addFunc(product.id)}>Add to Cart</button>
+                          </div>
                     </div>
                     </div>
             ))}

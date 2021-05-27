@@ -1,4 +1,5 @@
 import React from 'react';
+import Cart from '../Global/Cart';
 import {
    
     Link
@@ -19,7 +20,7 @@ const Navbar = () => {
                <li>
                   <Link to="">                    
                        <span className="shoppingCart">
-                       <i class="fas fa-shopping-cart"></i> Cart
+                       <i class="fas fa-shopping-cart"></i> Cart{Cart}
                    </span>
                    <span className="cartCount">0</span>
                    </Link>
