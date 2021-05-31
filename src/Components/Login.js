@@ -20,7 +20,7 @@ InputEvent=(event)=>{
     console.log(event.target.value)
     this.setState({[event.target.id]:event.target.value})
 }
-
+componentDidMount(){}
     handleSubmit = async(event) => {
         event.preventDefault();
         console.log('email test',this.state.email)
@@ -31,8 +31,13 @@ InputEvent=(event)=>{
         try{
             let response = await axios.post("http://localhost:2410/login",submit) 
             console.log('user response test',response)
+            this.props.responses(response.data)
+
             this.props.history.push("/product")
+        //  window.location.reload(false) 
+        this.componentDidMount()
         }
+
         catch(err){
         console.log(err.response)
         }

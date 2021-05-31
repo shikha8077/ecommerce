@@ -38,17 +38,17 @@ productDetails=(details)=>{
   }
 
     render() {
+        console.log("userRoleInside middle panel",this.props.data);
         let product = this.radioStructure(this.state.data)
 
 
-        console.log('middle panel is working')
         return (
             <div>
                 <div className='row col-12'>
                 <div className=" col-2"><LeftPanel product={product} LeftPanel={this.handleLeftPanel} /></div>
                 <div className=" col-7"><MiddlePanel category={this.state.categories} 
                 productDetails={this.productDetails}/></div>
-                <div className=" col-3"><Details details={this.state.details}/></div>
+                <div className=" col-3"><Details details={this.state.details} data={this.props.data}/></div>
             </div>
             </div>
         )

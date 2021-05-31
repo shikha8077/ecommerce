@@ -16,7 +16,11 @@ const Navbar = () => {
                <li>
                    <Link to="/">ShikhaStore</Link>
                </li>
+              
             </ul>
+            <ul> <li>
+                   <Link to="/login" style={{paddingLeft:'50rem',fontSize:'24px'}}>Login</Link>
+               </li></ul>
             <ul className="navlinks-right">
                <li>
                   <Link to="">                    
@@ -26,9 +30,7 @@ const Navbar = () => {
                    <span className="cartCount">0</span>
                    </Link>
                </li>
-               <li>
-                   <Link to="/login">Login</Link>
-               </li>
+             
                
            </ul>
            
