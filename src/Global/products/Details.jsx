@@ -18,8 +18,7 @@ export default class Details extends Component {
                 
 
                 <p>   {userRole.role==='admin'?<button>Add to cart</button> :""} </p>
-                          {/* <button>Add New Products</button>
-                         <button>Remove Products</button> */}
+                         
                                 <h3> product details section</h3>
                                 <img src={details.img}/>
                                 <h3>{details.title}</h3>
